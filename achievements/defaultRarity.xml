@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rarity>
+    <Common>\u001b[37m</Common>
+    <Uncommon>\u001b[0m</Uncommon>
+    <Rare>\u001b[94m</Rare>
+    <Mythical>\u001b[95m</Mythical>
+    <Immortal>\u001b[5m\u001b[93m</Immortal>
+    <Arcana>\u001b[4m \u001b[92m</Arcana>
+    <LOVE>\u001b[3m\u001b[31m</LOVE>
+</Rarity>
