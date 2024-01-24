@@ -1,7 +1,10 @@
 package wit.edu.pl;
 
-import java.io.IOException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import wit.edu.pl.Rarity.Rarity;
+
+import java.io.IOException;
+
 
 public final class ReaderRarity implements ReaderXML {
 
@@ -23,6 +26,7 @@ public final class ReaderRarity implements ReaderXML {
                 return rarity;
                 //Never use 100%
             } catch (IOException ex) {
+                System.out.println("sdsdsd");
                 return null;
             }
 

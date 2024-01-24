@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Rarity>
-    <Common>\u001b[37m</Common>
-    <Uncommon>\u001b[0m</Uncommon>
-    <Rare>\u001b[94m</Rare>
-    <Mythical>\u001b[95m</Mythical>
-    <Immortal>\u001b[5m\u001b[93m</Immortal>
-    <Arcana>\u001b[4m \u001b[92m</Arcana>
-    <LOVE>\u001b[3m\u001b[31m</LOVE>
+    <colors>
+        <!--WHITE = "\033[0;37m"
+            BLUE  = "\u001b[94m"
+            CYAN = "\033[0;36m"
+            PURPLE = "\u001B[35m"
+            YELLOW = "\u001B[33m"
+            GREEN = \033[0;32m"
+            RED = "\033[0;31m"-->
+        <Common>WHITE</Common>
+        <Uncommon>CYAN</Uncommon>
+        <Rare>BLUE</Rare>
+        <Mythical>PURPLE</Mythical>
+        <Immortal>YELLOW</Immortal>
+        <Arcana>GREEN</Arcana>
+        <LOVE>RED</LOVE>
+    </colors>
 </Rarity>

@@ -1,9 +1,8 @@
-package wit.edu.pl;
+package wit.edu.pl.Rarity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Rarity {
+public class Rarity{
     HashMap<String,String> colors;
 
     @Override
@@ -11,6 +10,10 @@ public class Rarity {
         return "Rarity{" +
                 "colors=" + colors +
                 '}';
+    }
+
+    public String getTheColor(String key){
+        return this.colors.get(key);
     }
 
     public HashMap<String, String> getColors() {

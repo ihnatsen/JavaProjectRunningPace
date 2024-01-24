@@ -1,17 +1,19 @@
 package wit.edu.pl;
-import com.fasterxml.jackson.databind.*;
-import java.io.IOException;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import wit.edu.pl.Achievements.Achievements;
+
+import java.io.IOException;
 
 
  public class ReaderAchievements implements ReaderJson {
 
-     static PathTorDir torDir = new PathTorDir();
+     static private final PathTorDir torDir = new PathTorDir();
 
      @Override
-     public  Achievements getRootAchievements(String nameAchievements) {
+     public Achievements getRootAchievements(String nameAchievements) {
 
-         ObjectMapper objectMapper =new ObjectMapper();
+         ObjectMapper objectMapper = new ObjectMapper();
 
          Achievements root = null;
          try {
@@ -20,7 +22,7 @@ import java.io.IOException;
          }
         catch (IOException e){
             try {
-                root = objectMapper.readValue(torDir.getPathToAchievements("defaultAchievements.json"), Achievements.class);
+                root = (objectMapper.readValue(torDir.getPathToAchievements("defaultAchievements.json"), Achievements.class));
                 return root;
                 //Never use 100%
             } catch (IOException ex) {

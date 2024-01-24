@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Display/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Display/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/achievements/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/achievements/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dat/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dis/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/goals/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/goals/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reader/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reader/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/untitled/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/untitled/src/main/resources" charset="UTF-8" />
   </component>
 </project>
