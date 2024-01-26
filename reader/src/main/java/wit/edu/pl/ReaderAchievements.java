@@ -3,30 +3,38 @@ package wit.edu.pl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import wit.edu.pl.Achievements.Achievements;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 
- public class ReaderAchievements implements ReaderJson {
+public class ReaderAchievements implements ReaderJson {
 
-     static private final PathTorDir torDir = new PathTorDir();
+
 
      @Override
-     public Achievements getRootAchievements(String nameAchievements) {
+     public Achievements getRootAchievements() {
 
          ObjectMapper objectMapper = new ObjectMapper();
 
          Achievements root = null;
          try {
-             root = objectMapper.readValue(torDir.getPathToAchievements(nameAchievements), Achievements.class);
+             Properties properties = new Properties();
+             System.out.println(PathTorDir.getPathToGlobalConfig());
+             properties.load(new FileInputStream(PathTorDir.getPathToGlobalConfig()));
+             String nameAchievements = properties.getProperty("nameAchievements");
+             nameAchievements = nameAchievements.substring(1,nameAchievements.length()-1);
+             root = objectMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements",nameAchievements)), Achievements.class);
              return root;
          }
         catch (IOException e){
             try {
-                root = (objectMapper.readValue(torDir.getPathToAchievements("defaultAchievements.json"), Achievements.class));
+                root = (objectMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements","defaultAchievements.json")), Achievements.class));
                 return root;
                 //Never use 100%
             } catch (IOException ex) {
-                return null;
+                return root;
                 }
 
             }

@@ -1,8 +1,9 @@
 package wit.edu.pl.Rarity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Rarity{
+public class Rarity implements Serializable {
     HashMap<String,String> colors;
 
     @Override

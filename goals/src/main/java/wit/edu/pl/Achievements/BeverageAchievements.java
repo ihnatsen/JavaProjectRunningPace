@@ -1,8 +1,9 @@
 package wit.edu.pl.Achievements;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface BeverageAchievements  {
+public interface BeverageAchievements extends Serializable {
 
    public String getAttributesString();
    public String getRarity();

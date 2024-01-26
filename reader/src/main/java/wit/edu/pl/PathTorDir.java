@@ -7,20 +7,40 @@ import java.nio.file.Paths;
 public class PathTorDir {
 
     static String rootProject = System.getProperty("user.dir");
-    static String goalDirectory = "achievements";
     static String separator = File.separator;
-
     static String nameApp = "RunningPace";
-    
-    public File getPathToAchievements(String nameFile){
-        Path pathAchievements = Paths.get(
-                rootProject      + separator +
-                        nameApp + separator+
-                goalDirectory    + separator +
-                nameFile         + separator);
-        System.out.println(pathAchievements.toString());
 
-        return pathAchievements.toFile();
+    static String nameConfog = "config.properties";
+    
+    public static String getPathToModuleFile(String module, String nameFile){
+        Path pathModule = Paths.get(
+                    rootProject  + separator +
+                        nameApp      + separator +
+                        module       + separator +
+                        nameFile     + separator);
+
+
+        return pathModule.toString();
+    }
+    public static String getPathToResourcesFile(String module, String nameFile){
+        Path pathModule = Paths.get(
+                rootProject     + separator +
+                        nameApp     + separator +
+                        module      + separator +
+                        "src"       + separator +
+                        "main"      + separator +
+                        "resources" + separator +
+                        nameFile    + separator );
+        return pathModule.toString();
+    }
+
+    public static String getPathToGlobalConfig(){
+        Path pathModule = Paths.get(
+                rootProject     + separator +
+                        nameApp     + separator +
+                        nameConfog
+                       );
+        return pathModule.toString();
     }
     
 }

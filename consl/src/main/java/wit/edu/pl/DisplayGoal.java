@@ -1,18 +1,16 @@
 package wit.edu.pl;
 
-import wit.edu.pl.Achievements.Achievements;
 import wit.edu.pl.Achievements.BeverageAchievements;
-import wit.edu.pl.Rarity.Rarity;
 
 import static java.util.Arrays.fill;
 
-class Display {
+class DisplayGoal implements Observer,Display {
 
     CondimentDecoratorAchievements goal;
 
 
 
-    public Display(CondimentDecoratorAchievements goal) {
+    public DisplayGoal(CondimentDecoratorAchievements goal) {
 
         this.goal = goal;
     }
@@ -65,8 +63,8 @@ class Display {
         }
         flag[depth] = true;
     }
-
-    void formAndPrintTree() {
+    @Override
+    public void display() {
         Integer nv = this.goal.getNumNode();
 
         boolean[] flag = new boolean[nv];
@@ -75,12 +73,9 @@ class Display {
         printNTree(goal, flag, 0, false);
     }
 
-    public static void main(String[] args) {
-        Achievements achievements1 = new ReaderAchievements().getRootAchievements("Default.json");
-        Rarity rarity = new ReaderRarity().getRarity("Default.xml");
-        CondimentDecoratorAchievements decoratorAchievements = new Goal(achievements1,rarity);
-        Display display = new Display(decoratorAchievements);
-        display.formAndPrintTree();
+    @Override
+    public void update() {
+        this.display();
     }
 }
 

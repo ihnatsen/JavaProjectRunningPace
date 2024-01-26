@@ -3,30 +3,36 @@ package wit.edu.pl;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import wit.edu.pl.Rarity.Rarity;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 
 public final class ReaderRarity implements ReaderXML {
 
-    static PathTorDir torDir = new PathTorDir();
 
     @Override
-    public Rarity getRarity(String nameRarity) {
+    public Rarity getRarity() {
 
         XmlMapper xmlMapper =new XmlMapper();
 
         Rarity rarity = null;
         try {
-            rarity = xmlMapper.readValue(torDir.getPathToAchievements(nameRarity), Rarity.class);
+            Properties properties = new Properties();
+            System.out.println(PathTorDir.getPathToGlobalConfig());
+            properties.load(new FileInputStream(PathTorDir.getPathToGlobalConfig()));
+            String nameRarity = properties.getProperty("nameRarity");
+            nameRarity = nameRarity.substring(1,nameRarity.length()-1);
+            rarity = xmlMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements",nameRarity)), Rarity.class);
             return rarity;
         }
         catch (IOException e){
             try {
-                rarity = xmlMapper.readValue(torDir.getPathToAchievements("defaultRarity.xml"), Rarity.class);
+                rarity = xmlMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements","defaultRarity.xml")), Rarity.class);
                 return rarity;
                 //Never use 100%
             } catch (IOException ex) {
-                System.out.println("sdsdsd");
                 return null;
             }
 

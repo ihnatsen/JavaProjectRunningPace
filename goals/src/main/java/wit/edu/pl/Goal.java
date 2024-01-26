@@ -6,9 +6,8 @@ import wit.edu.pl.Rarity.Rarity;
 import java.util.HashMap;
 import java.util.List;
 
-public class Goal extends CondimentDecoratorAchievements {
+public class Goal extends CondimentDecoratorAchievements{
     BeverageAchievements achievements;
-    List<? extends BeverageAchievements> children;
 
     Rarity rarity;
 

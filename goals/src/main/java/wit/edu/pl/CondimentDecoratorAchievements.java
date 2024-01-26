@@ -3,9 +3,10 @@ package wit.edu.pl;
 import wit.edu.pl.Achievements.BeverageAchievements;
 import wit.edu.pl.Rarity.Rarity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class CondimentDecoratorAchievements implements BeverageAchievements {
+public abstract class CondimentDecoratorAchievements implements BeverageAchievements, Serializable {
 
     public BeverageAchievements beverageAchievements;
     public Rarity rarity;
