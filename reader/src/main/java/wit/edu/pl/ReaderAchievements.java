@@ -21,16 +21,16 @@ public class ReaderAchievements implements ReaderJson {
          Achievements root = null;
          try {
              Properties properties = new Properties();
-             System.out.println(PathTorDir.getPathToGlobalConfig());
-             properties.load(new FileInputStream(PathTorDir.getPathToGlobalConfig()));
+             System.out.println(PathToDir.getPathToGlobalConfig());
+             properties.load(new FileInputStream(PathToDir.getPathToGlobalConfig()));
              String nameAchievements = properties.getProperty("nameAchievements");
              nameAchievements = nameAchievements.substring(1,nameAchievements.length()-1);
-             root = objectMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements",nameAchievements)), Achievements.class);
+             root = objectMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements",nameAchievements)), Achievements.class);
              return root;
          }
         catch (IOException e){
             try {
-                root = (objectMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements","defaultAchievements.json")), Achievements.class));
+                root = (objectMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements","defaultAchievements.json")), Achievements.class));
                 return root;
                 //Never use 100%
             } catch (IOException ex) {

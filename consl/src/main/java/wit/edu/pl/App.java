@@ -39,7 +39,7 @@ public class App implements Subject {
     }
 
     private static Integer getFlag() {
-        File file = new File(PathTorDir.getPathToResourcesFile("reader", "flag.txt"));
+        File file = new File(PathToDir.getPathToResourcesFile("reader", "flag.txt"));
         try (FileReader fileReader = new FileReader(file)) {
             BufferedReader reader = new BufferedReader(fileReader);
             String flag = null;

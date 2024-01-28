@@ -7,7 +7,7 @@ import java.io.*;
 public class SaveProgress {
 
     public static void save(Object goal){
-        try(FileOutputStream fileOutputStream = new FileOutputStream(PathTorDir.getPathToResourcesFile("reader","save.ser"));
+        try(FileOutputStream fileOutputStream = new FileOutputStream(PathToDir.getPathToResourcesFile("reader","save.ser"));
             ObjectOutputStream os = new ObjectOutputStream(fileOutputStream)) {
             os.writeObject(goal);
         } catch (FileNotFoundException e) {
@@ -19,7 +19,7 @@ public class SaveProgress {
 
     public static void save(Integer flag){
 
-        File file = new File(PathTorDir.getPathToResourcesFile("reader","flag.txt"));
+        File file = new File(PathToDir.getPathToResourcesFile("reader","flag.txt"));
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(file);

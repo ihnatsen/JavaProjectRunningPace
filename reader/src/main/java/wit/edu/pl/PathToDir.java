@@ -4,7 +4,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class PathTorDir {
+public class PathToDir {
 
     static String rootProject = System.getProperty("user.dir");
     static String separator = File.separator;

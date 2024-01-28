@@ -20,16 +20,16 @@ public final class ReaderRarity implements ReaderXML {
         Rarity rarity = null;
         try {
             Properties properties = new Properties();
-            System.out.println(PathTorDir.getPathToGlobalConfig());
-            properties.load(new FileInputStream(PathTorDir.getPathToGlobalConfig()));
+            System.out.println(PathToDir.getPathToGlobalConfig());
+            properties.load(new FileInputStream(PathToDir.getPathToGlobalConfig()));
             String nameRarity = properties.getProperty("nameRarity");
             nameRarity = nameRarity.substring(1,nameRarity.length()-1);
-            rarity = xmlMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements",nameRarity)), Rarity.class);
+            rarity = xmlMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements",nameRarity)), Rarity.class);
             return rarity;
         }
         catch (IOException e){
             try {
-                rarity = xmlMapper.readValue(new File(PathTorDir.getPathToModuleFile("achievements","defaultRarity.xml")), Rarity.class);
+                rarity = xmlMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements","defaultRarity.xml")), Rarity.class);
                 return rarity;
                 //Never use 100%
             } catch (IOException ex) {

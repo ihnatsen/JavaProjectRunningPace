@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 public class LoadingProgress {
     static public Object loadingProgress() {
         try {
-            ObjectInputStream is =new ObjectInputStream(new FileInputStream(PathTorDir.getPathToResourcesFile("reader","save.ser")));
+            ObjectInputStream is =new ObjectInputStream(new FileInputStream(PathToDir.getPathToResourcesFile("reader","save.ser")));
             return is.readObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
