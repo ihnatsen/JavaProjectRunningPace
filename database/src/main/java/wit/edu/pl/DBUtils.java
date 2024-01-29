@@ -21,14 +21,13 @@ public class DBUtils {
        Properties properties = new Properties();
 
        try(FileInputStream fis = new FileInputStream(PathToDir.getPathToResourcesFile
-               ("database","config.properties"))){
+               ("database", "config.properties"))){
            properties.load(fis);
 
            String dbURL = properties.getProperty("db.host");
            String dbPassword = properties.getProperty("db.password");
            String dbUsername = properties.getProperty("db.username");
            Connection connection = DriverManager.getConnection(dbURL,dbPassword,dbUsername);
-
            return connection;
 
        } catch (SQLException e) {

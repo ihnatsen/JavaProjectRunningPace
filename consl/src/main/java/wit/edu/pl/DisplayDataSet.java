@@ -7,13 +7,13 @@ import java.util.stream.Stream;
 
 public class DisplayDataSet implements Display,Observer{
     @Override
-    public  void display() {
+    public void display() {
 
         boolean leftJustifiedRows = false;
 
-        String[][] table = new String[][] { { "id", "First Name", "Last Name", "Age" },
-                { "1", "John", "Johnson", "45" }, { "2", "Tom", "", "35" }, { "3", "Rose", "Johnson", "22" },
-                { "4", "Jimmy", "Kimmel", "" } };
+
+
+        String[][] table = CRUDUtiels.getRecords();
 
 
         Map<Integer, Integer> columnLengths = new HashMap<>();
@@ -32,7 +32,7 @@ public class DisplayDataSet implements Display,Observer{
         String flag = leftJustifiedRows ? "-" : "";
         columnLengths.entrySet().stream().forEach(e -> formatString.append("| %" + flag + e.getValue() + "s "));
         formatString.append("|\n");
-        System.out.println("formatString = " + formatString.toString());
+
 
 
         String line = columnLengths.entrySet().stream().reduce("", (ln, b) -> {
@@ -43,7 +43,7 @@ public class DisplayDataSet implements Display,Observer{
             return ln + templn;
         }, (a, b) -> a + b);
         line = line + "+\n";
-        System.out.println("Line = " + line);
+
 
 
         System.out.print(line);
@@ -58,5 +58,10 @@ public class DisplayDataSet implements Display,Observer{
     @Override
     public void update() {
         display();
+    }
+
+    public static void main(String[] args) {
+        DisplayDataSet dataSet = new DisplayDataSet();
+        dataSet.update();
     }
 }
