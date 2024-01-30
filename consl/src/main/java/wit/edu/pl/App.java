@@ -15,7 +15,7 @@ public class App implements Subject {
     List<Observer> observers = new  ArrayList<>();
     static Integer flag;
     static BeverageAchievements goal;
-    static Observer dis1,dis2,dis3;
+    static Observer dis1,dis2,dis3,dis4;
 
 
 
@@ -59,30 +59,32 @@ public class App implements Subject {
         App.flag = getFlag();
         dis1 = new DisplayGoal((CondimentDecoratorAchievements) goal);
         dis2 = new DisplayRanting(null);
+        dis3 = new DisplayDataSet();
+        dis4 = new DisplayWriteData();
+
         App runningPace = new App();
 
         //Registration obs______________________
-        runningPace.registerObserver(dis1,dis2);
+        runningPace.registerObserver(dis1,dis2,dis3,dis4);
 
         System.out.println("Running Pace");
         System.out.println("\033[38;2;173;229;92m*JAVA Edition*\u001b[0m");
-        System.out.println(App.goal);
         while (true){
             System.out.println("1.Achievements");
             System.out.println("2.Ranting");
-            System.out.println("4.Exit");
+            System.out.println("3.Records");
+            System.out.println("4.WriteData");
+            System.out.println("5.Exit");
             System.out.println();
             System.out.println("Enter command:");
             int com = input.nextInt()-1;
-            if(com==3){
+            if(com==4){
                 SaveProgress.save(1);
                 SaveProgress.save(goal);
                 break;
             }
             System.out.println();
-            System.out.println(flag);
             runningPace.notifyObserver(com);
-            System.out.println(flag);
 
         }
 

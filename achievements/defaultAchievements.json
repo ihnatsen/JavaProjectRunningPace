@@ -32,7 +32,7 @@
           "children": [
             {
               "title": "Top 100",
-              "description": "You have enough data to open a rating. You are an unusual man.",
+              "description": "Write 10 data. You are an unusual man.",
               "rarity": "Immortal",
               "sql": "SELECT Count(*)>=100 FROM statics",
               "children": []
