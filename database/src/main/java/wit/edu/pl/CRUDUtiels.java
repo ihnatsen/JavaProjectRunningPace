@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CRUDUtiels  {
+public class CRUDUtiels {
     private static String INSERT = "INSERT INTO runningPace " +
             "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
 
     public static String[][] getRecords(){
         try(Connection connection = DBUtils.getInstance().getConnection()) {
@@ -78,14 +81,23 @@ public class CRUDUtiels  {
         }
 
 
-
-
-
     }
-
-
-
-}
+    public static Iterator<Object> writeSelect(String query) {
+        IteratorDataSet<Object> o;
+        List<Object> dataSet = new ArrayList<>();
+        try(Connection connection = DBUtils.getInstance().getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int i = 1;
+            while (resultSet.next()){
+                dataSet.add(resultSet.getObject(i));
+            }
+            return new IteratorDataSet<Object>(dataSet);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    }
 
 
 

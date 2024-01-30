@@ -32,9 +32,12 @@ public class Goal extends CondimentDecoratorAchievements{
         theColors.put("GREEN","\033[38;2;173;229;92m");
         theColors.put("RED","\033[38;2;255;3;62m");
 
+        String res = theColors.get(rarity.getTheColor(achievements.getRarity())) + achievements.getAttributesString()+NoneANSI;
+        if(getFlag()){
+            res = "\033[9m" + res+ NoneANSI;
+        }
+        return res;
 
-
-        return theColors.get(rarity.getTheColor(achievements.getRarity())) + achievements.getAttributesString() + NoneANSI;
     }
 
 
@@ -69,6 +72,11 @@ public class Goal extends CondimentDecoratorAchievements{
     @Override
     public Boolean getFlag() {
         return achievements.getFlag();
+    }
+
+    @Override
+    public String getSql() {
+        return achievements.getSql();
     }
 
 

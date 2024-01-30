@@ -13,4 +13,7 @@ public interface BeverageAchievements extends Serializable {
     public Integer getNumNode(Integer zero);
     public Integer getNumNode();
     public Boolean getFlag();
+    public String getSql();
+
+
 }

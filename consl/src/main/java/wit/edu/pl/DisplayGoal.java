@@ -71,6 +71,7 @@ class DisplayGoal implements Observer,Display {
         fill(flag, true);
 
         printNTree(goal, flag, 0, false);
+        System.out.println();
     }
 
     @Override

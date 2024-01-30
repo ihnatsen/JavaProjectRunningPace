@@ -2,39 +2,39 @@
   "title": "statistics",
   "description": "Write first data",
   "rarity": "Common",
-  "sql": "SELECT count(*)>=1 FROM statics",
+  "sql": "SELECT CASE WHEN COUNT(*) >= 1 THEN 1 ELSE 0 END AS result FROM RunningPace",
   "children": [
     {
       "title": "Top 5",
       "description": "Write 5 data",
       "rarity": "Uncommon",
-      "sql": "SELECT Count(*)>=5 FROM statics",
+      "sql": "SELECT CASE WHEN COUNT(*) >= 5 THEN 1 ELSE 0 END AS result FROM RunningPace",
       "children": [
         {
           "title": "Adventure Time",
           "description": "Visit 5 locations",
           "rarity": "Mythical",
-          "sql": "SELECT count(location)>=5 From (SELECT DISTINCT location FROM statics)",
+          "sql": "SELECT CASE WHEN COUNT(TRAININGLOCATION)>= 5 THEN 1 ELSE 0 END AS result FROM (SELECT DISTINCT TRAININGLOCATION FROM RunningPace)",
           "children": []
         },
         {
           "title": "Melomane",
           "description": "Listen to 5 type music",
           "rarity": "Rare",
-          "sql": "SELECT count(music)>=5 From (SELECT DISTINCT music FROM statics)",
+          "sql": "SELECT CASE WHEN COUNT(MUSIC)>= 5 THEN 1 ELSE 0 END AS result FROM (SELECT DISTINCT MUSIC FROM RunningPace",
           "children": []
         },
         {
           "title": "Top 10",
           "description": "Write 10 data",
           "rarity": "Mythical",
-          "sql": "SELECT Count(*)>=10 FROM statics",
+          "sql": "SELECT CASE WHEN COUNT(*) >= 10 THEN 1 ELSE 0 END AS result FROM RunningPace",
           "children": [
             {
               "title": "Top 100",
-              "description": "Write 10 data. You are an unusual man.",
+              "description": "Write 100 data. You are an unusual man.",
               "rarity": "Immortal",
-              "sql": "SELECT Count(*)>=100 FROM statics",
+              "sql": "SELECT CASE WHEN COUNT(*) >= 100 THEN 1 ELSE 0 END AS result FROM RunningPace",
               "children": []
             }
           ]
@@ -45,35 +45,28 @@
       "title": "Pet a cat",
       "description": "Pet a cat before training (^.X.^)",
       "rarity": "LOVE",
-      "sql": "SELECT Count(cat) >= 1 FROM statics WHERE cat = 1",
-      "children": []
-    },
-    {
-      "title": "Euphoria",
-      "description": "experience Euphoria",
-      "rarity": "Arcana",
-      "sql": "SELECT Count(euphoria) >= 1 FROM statics WHERE euphoria = \"1\"",
+      "sql": "SELECT CASE WHEN COUNT(Cat) >= 1 THEN 1 ELSE 0 END AS result FROM RunningPace",
       "children": []
     },
     {
       "title": "Kilometer",
       "description": "Run the first kilometers",
       "rarity": "Common",
-      "sql": "SELECT sum(distance) >= 1 FROM statics",
+      "sql": "SELECT CASE WHEN Sum(Distance) >= 1 THEN 1 ELSE 0 END AS result FROM RunningPace",
       "children": [
         {
 
           "title": "10 Kilometers",
           "description": "Run the first 10 kilometers",
           "rarity": "Uncommon",
-          "sql": "SELECT sum(distance) >= 10 FROM statics",
+          "sql": "SELECT CASE WHEN Sum(Distance) >= 10 THEN 1 ELSE 0 END AS result FROM RunningPace",
           "children": [
             {
 
               "title": "Marathon",
-              "description": "<<<\"We have won, Athenians!\">>>\nRun a distance equal to a marathon",
+              "description": "<<<\"We have won, Athenians!\">>>\nRun a DISTANCE equal to a marathon",
               "rarity": "Immortal",
-              "sql": "SELECT sum(distance) >= 42 FROM statics",
+              "sql": "SELECT CASE WHEN Sum(Distance) >= 42 THEN 1 ELSE 0 END AS result FROM RunningPace",
               "children": []
             }
 

@@ -54,11 +54,16 @@ public class App implements Subject {
     }
 
     public static void main(String[] args) {
+
         App.goal = getGoal(new Goal(new ReaderAchievements().getRootAchievements(),
                 new ReaderRarity().getRarity()));
+
+
+
+
         App.flag = getFlag();
         dis1 = new DisplayGoal((CondimentDecoratorAchievements) goal);
-        dis2 = new DisplayRanting(null);
+        dis2 = new DisplayRanting();
         dis3 = new DisplayDataSet();
         dis4 = new DisplayWriteData();
 

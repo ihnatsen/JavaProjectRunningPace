@@ -33,6 +33,7 @@ public class DisplayWriteData implements Display,Observer {
         attributes.set(1,pace);
 
         try {
+
             CRUDUtiels.writeData((attributes));
         } catch (SQLException e) {
             throw new RuntimeException(e);
