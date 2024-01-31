@@ -27,4 +27,10 @@ public abstract class CondimentDecoratorAchievements implements BeverageAchievem
 
     public abstract String getSql();
 
+    public abstract void  setFlag(Boolean flag);
+
+    public abstract String getTitle();
+
+    public abstract String getDescription();
+
 }

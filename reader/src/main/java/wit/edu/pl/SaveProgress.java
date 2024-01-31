@@ -1,7 +1,5 @@
 package wit.edu.pl;
 
-import wit.edu.pl.Achievements.BeverageAchievements;
-
 import java.io.*;
 
 public class SaveProgress {
@@ -31,13 +29,6 @@ public class SaveProgress {
 
 
     }
-
-    public static void main(String[] args) {
-        save(new Goal(new ReaderAchievements().getRootAchievements(),new ReaderRarity().getRarity()));
-        BeverageAchievements beverageAchievements = (Goal) LoadingProgress.loadingProgress();
-        System.out.println(beverageAchievements);
-    }
-
 
 
 }

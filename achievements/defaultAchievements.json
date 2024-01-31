@@ -21,7 +21,7 @@
           "title": "Melomane",
           "description": "Listen to 5 type music",
           "rarity": "Rare",
-          "sql": "SELECT CASE WHEN COUNT(MUSIC)>= 5 THEN 1 ELSE 0 END AS result FROM (SELECT DISTINCT MUSIC FROM RunningPace",
+          "sql": "SELECT CASE WHEN COUNT(MUSIC)>= 5 THEN 1 ELSE 0 END AS result FROM (SELECT DISTINCT MUSIC FROM RunningPace)",
           "children": []
         },
         {

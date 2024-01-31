@@ -2,11 +2,13 @@ package wit.edu.pl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class DisplayWriteData implements Display,Observer {
+public class DisplayWriteData implements Display,Observer,Subject {
 
+    ArrayList<Observer> observers = new ArrayList<>();
     static Scanner INPUT = new Scanner(System.in);
 
     @Override
@@ -22,26 +24,42 @@ public class DisplayWriteData implements Display,Observer {
             attributes.add(INPUT.next());
         }
 
-        String[] hourseMinSec = attributes.get(0).split(":");
-        Integer hours   = Integer.parseInt(hourseMinSec[0])*60;
-        Integer min     = Integer.parseInt(hourseMinSec[1]);
-        Integer sec     = Integer.parseInt(hourseMinSec[0])/60;
-        Integer timeMIN = hours + min + sec;
+        String[] hourMinSec = attributes.get(0).split(":");
+        Integer hour   = Integer.parseInt(hourMinSec[0])*60;
+        Integer min     = Integer.parseInt(hourMinSec[1]);
+        Integer sec     = Integer.parseInt(hourMinSec[0])/60;
+        Integer timeMIN = hour + min + sec;
         Double distance = Double.parseDouble(attributes.get(3));
 
         String pace = String.format("%2f",((double) timeMIN / distance)).replace(',','.');
         attributes.set(1,pace);
-
         try {
-
             CRUDUtiels.writeData((attributes));
+            notifyObserver(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
     public void update() {
         display();
+    }
+
+    @Override
+    public void registerObserver(Observer... observer) {
+        this.observers.addAll(Arrays.asList(observer));
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        this.observers.remove(observer);
+
+    }
+
+    @Override
+    public void notifyObserver(Integer com) {
+        this.observers.get(com).update();
     }
 }

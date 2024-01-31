@@ -2,27 +2,23 @@ package wit.edu.pl;
 
 import wit.edu.pl.Achievements.BeverageAchievements;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class App implements Subject {
     static Scanner input = new Scanner(System.in);
-    List<Observer> observers = new  ArrayList<>();
-    static Integer flag;
+    List<Observer> observers = new ArrayList<>();
+
     static BeverageAchievements goal;
     static Observer dis1,dis2,dis3,dis4;
 
 
-
-
     @Override
     public void registerObserver(Observer ... observers) {
-        for(Observer obs: observers){this.observers.add(obs);}
+        this.observers.addAll(Arrays.asList(observers));
 
     }
 
@@ -31,41 +27,27 @@ public class App implements Subject {
         this.observers.remove(observer);
 
     }
-
     @Override
     public void notifyObserver(Integer com) {
         observers.get(com).update();
 
     }
 
-    private static Integer getFlag() {
-        File file = new File(PathToDir.getPathToResourcesFile("reader", "flag.txt"));
-        try (FileReader fileReader = new FileReader(file)) {
-            BufferedReader reader = new BufferedReader(fileReader);
-            String flag = null;
-            while ((flag = reader.readLine()) != null) {
-                return Integer.parseInt(flag);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return null;
-    }
 
     public static void main(String[] args) {
 
         App.goal = getGoal(new Goal(new ReaderAchievements().getRootAchievements(),
                 new ReaderRarity().getRarity()));
 
-
-
-
-        App.flag = getFlag();
         dis1 = new DisplayGoal((CondimentDecoratorAchievements) goal);
         dis2 = new DisplayRanting();
         dis3 = new DisplayDataSet();
         dis4 = new DisplayWriteData();
+
+
+        NotificationFulfillment nf = new NotificationFulfillment((CondimentDecoratorAchievements) goal);
+        DisplayWriteData displayWriteData = (DisplayWriteData) dis4;
+        displayWriteData.registerObserver(nf);
 
         App runningPace = new App();
 
@@ -84,7 +66,6 @@ public class App implements Subject {
             System.out.println("Enter command:");
             int com = input.nextInt()-1;
             if(com==4){
-                SaveProgress.save(1);
                 SaveProgress.save(goal);
                 break;
             }
@@ -96,8 +77,12 @@ public class App implements Subject {
     }
 
     public static BeverageAchievements getGoal(BeverageAchievements goal) {
-        return getFlag()>0 ? (BeverageAchievements) LoadingProgress.loadingProgress():
-                goal;
+        try {
+            BeverageAchievements res = (BeverageAchievements) LoadingProgress.loadingProgress();
+            return res;
+        } catch (IOException e) {
+            return goal;
+        }
 
     }
 
