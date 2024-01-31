@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+/database/src/main/java/wit/edu/pl/Test.java
+/database/src/main/java/wit/edu/pl/MainApp.java

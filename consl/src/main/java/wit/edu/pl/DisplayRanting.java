@@ -16,6 +16,7 @@ public class DisplayRanting implements Observer, Display {
 
         if(ranting.isEmpty()){
             System.out.println("You must have at least 5 records for rating. :(");
+            return;
         }
 
         int maxSpace = 0;
