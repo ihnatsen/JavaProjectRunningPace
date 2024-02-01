@@ -12,9 +12,9 @@ public class DisplayRanting implements Observer, Display {
      Map<String,Integer> ranting = corrKid.getRanting();
 
 
-    public void display() {
+    public void display()  {
 
-        if(ranting.isEmpty()){
+        if(ranting == null){
             System.out.println("You must have at least 5 records for rating. :(");
             return;
         }

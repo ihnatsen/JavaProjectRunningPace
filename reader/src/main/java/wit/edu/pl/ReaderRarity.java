@@ -23,7 +23,6 @@ public final class ReaderRarity implements ReaderXML {
             System.out.println(PathToDir.getPathToGlobalConfig());
             properties.load(new FileInputStream(PathToDir.getPathToGlobalConfig()));
             String nameRarity = properties.getProperty("nameRarity");
-            nameRarity = nameRarity.substring(1,nameRarity.length()-1);
             rarity = xmlMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements",nameRarity)), Rarity.class);
             return rarity;
         }

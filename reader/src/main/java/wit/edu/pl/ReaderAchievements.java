@@ -24,7 +24,6 @@ public class ReaderAchievements implements ReaderJson {
              System.out.println(PathToDir.getPathToGlobalConfig());
              properties.load(new FileInputStream(PathToDir.getPathToGlobalConfig()));
              String nameAchievements = properties.getProperty("nameAchievements");
-             nameAchievements = nameAchievements.substring(1,nameAchievements.length()-1);
              root = objectMapper.readValue(new File(PathToDir.getPathToModuleFile("achievements",nameAchievements)), Achievements.class);
              return root;
          }
