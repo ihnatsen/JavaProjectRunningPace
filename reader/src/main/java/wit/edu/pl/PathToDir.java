@@ -8,7 +8,7 @@ public class PathToDir {
 
     static String rootProject = System.getProperty("user.dir");
     static String separator = File.separator;
-    static String nameApp = "RunningPace";
+    static String nameApp = "";
 
     static String nameConfog = "config.properties";
     
