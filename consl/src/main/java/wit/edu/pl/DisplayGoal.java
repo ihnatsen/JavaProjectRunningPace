@@ -24,7 +24,7 @@ class DisplayGoal implements Observer,Display {
 
         for (int i = 1; i < depth; ++i) {
 
-            if (flag[i] == true) {
+            if (flag[i]) {
                 System.out.print("| "
                         + " "
                         + " "
